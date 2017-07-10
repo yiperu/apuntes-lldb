@@ -264,10 +264,6 @@ po ((UILabel *)0x7ff171d05580).text
 QuickLook
 https://github.com/ryanolsonk/LLDB-QuickLook
 
-
-
-Falta desde el video 4 WatchPoint Script Command
-
-
-
+Ima25
+RJu17
 
