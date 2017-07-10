@@ -14,12 +14,12 @@ Impresion de Escalares
 Algunos Comandos
 
 Comando  | Descripcion
-------------- | -------------
-	(lldb) br l  | Listar los breakpoint
-	(lldb) br delete 1 | delete a breakpoint
-	(lldb) br e 1 | enable a breakpoint
-	(lldb) br di 1 | disable a breakpoint
-	(lldb) b MyViewController.m:30 | set a breakpoint (ojo solo b)
+|------------- | ------------- |
+| (lldb) br l  | Listar los breakpoint |
+| (lldb) br delete 1 | delete a breakpoint |
+| (lldb) br e 1 | enable a breakpoint |
+| (lldb) br di 1 | disable a breakpoint |
+| (lldb) b MyViewController.m:30 | set a breakpoint (ojo solo b) |
 
 Add a symbolic breakpoint:
 
@@ -56,12 +56,12 @@ Run and debugger command from a breakpoint: backTrace:
 	> DONE
 
 #####Comandos
-Comando  | Accion
-------------- | -------------
-(lldb) continue | Resume Execution (play)
-(lldb) n | Step Over  
-(lldb) s | Step In  
-(lldb) finish | Step Out  
+| Comando  | Accion |
+|------------- | -------------|
+| (lldb) continue | Resume Execution (play) |
+| (lldb) n | Step Over |
+| (lldb) s | Step In |
+| (lldb) finish | Step Out |
 
 *br  =  breakpoint
 
@@ -135,13 +135,18 @@ LLDB Variables: Variable names must have a type and begin with a $
 
 
 Create and run code on the fly
-expr NSString * $json = [self fetchRemoteData];
-expr NSData * $data = [$json dataUsingEncoding:4]
-expr NSDictionary * $parsedJson = [[NSJSONSerialization JSONObjectWithData:$data options:0 error:NULL]
-po parsedData
 
-**Lo que utiliza Kot:
-po [[NSString alloc] initWithData:response.responseData encoding:4]
+	(lldb) expr NSString * $json = [self fetchRemoteData];
+	
+	(lldb) expr NSData * $data = [$json dataUsingEncoding:4]
+	
+	(lldb) expr NSDictionary * $parsedJson = [[NSJSONSerialization JSONObjectWithData:$data options:0 error:NULL]
+	
+	(lldb) po parsedData
+
+Otro Ejemplo:
+
+	po [[NSString alloc] initWithData:response.responseData encoding:4]
 
 // Hubo un ejemplo muy interesante donde en tiempo de debug se pudo asignar un valor a una variable del sistema, lo que llaman run code on the fly
 
