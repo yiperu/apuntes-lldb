@@ -9,13 +9,15 @@ Impresion de Escalares
 	(lldb) p (int)[[self myMassiveArray] count]
 	3
 
-Listar todos los Breakpoint
+Algunos Comandos
 
-	(lldb) br l
-	(lldb) br delete 1	//  delete a breakpoint
-	(lldb) br e 1		//  enable a breakpoint
-	(lldb) br di 1		// disable a breakpoint
-	(lldb) b MyViewController.m:30		// set a breakpoint (ojo solo b)
+Comando  | Descripcion
+------------- | -------------
+	(lldb) br l  | Listar los breakpoint
+	(lldb) br delete 1 | delete a breakpoint
+	(lldb) br e 1 | enable a breakpoint
+	(lldb) br di 1 | disable a breakpoint
+	(lldb) b MyViewController.m:30 | set a breakpoint (ojo solo b)
 
 Add a symbolic breakpoint:
 
@@ -39,33 +41,27 @@ Ejemplo a los metodos - (void)viewDidLoad
 	4. Log Message	
 	5. Shell Command	
 	6. Sound
-	
-	
-	
-	
+		
 **Run a debugger command from a breakpoint**
+
+Ejemplo de como agregar como Action un Debugger command al un breakpoint de indice 2, en este caso un
+Run and debugger command from a breakpoint: backTrace:
 
 	(lldb) br com add 2   // Luego de esto aparecera un mensaje: Enter your debugger command(s). Type ‘DONE’ to end;
 	Enter your debuger command(s). Type 'DONE' to end.
-	> bt
+	> bt // back trace
 	> continue
 	> DONE
 
 #####Comandos
-Accion  | Comando
+Comando  | Accion
 ------------- | -------------
-Resume Execution (play)  | (lldb) continue
-Step Over  | (lldb) n
-Step In  | (lldb) s
-Step Out  | (lldb) finish
-
-
-
+(lldb) continue | Resume Execution (play)
+(lldb) n | Step Over  
+(lldb) s | Step In  
+(lldb) finish | Step Out  
 
 *br  =  breakpoint
-
-
-
 
 ###Symbolic BreakPoint: (simbolic): br set -n <method>
 
@@ -76,18 +72,8 @@ Step Out  | (lldb) finish
 
 	br list
 
-** Ejemplo de como agregar como Action un Debugger command, en este caso un
-Run and debugger command from a breakpoint:
- backTrace:
-br com add 2     // Luego de esto aparecera un mensaje: Enter your debugger command(s). Type ‘DONE’ to end;
-> bt   // back trace
-> continue
-> DONE
-
-
-// - - - -
-
 -
+
 ###Set a Conditional Break Point
 	
 	1ro establecer el breakpoint:
