@@ -56,6 +56,7 @@ Run and debugger command from a breakpoint: backTrace:
 	> DONE
 
 #####Comandos
+
 | Comando  | Accion |
 |------------- | -------------|
 | (lldb) continue | Resume Execution (play) |
@@ -158,22 +159,24 @@ c
 
 
 
-**Backtrace, Thread and Frame
-bt
-bt all
+##Backtrace, Thread and Frame
 
-thread backtrace
-thread backtrace all
-thread list
-thread select 1
-thread until 100
-thread return @“Custom Return String”
+	(lldb) bt
+	(lldb) bt all
+
+	(lldb) thread backtrace
+	(lldb) thread backtrace all
+	(lldb) thread list
+	(lldb) thread select 1
+	(lldb) thread until 100
+	(lldb) thread return @“Custom Return String”
 
 **Frame  // Inspect local variable in realtime
-frame variable
-frame variable self
-frame select 2  // Select another frame
-frame select -relative -1  // Select a new frame relative to the current frame
+
+	(lldb) frame variable
+	(lldb) frame variable self
+	(lldb) frame select 2  // Select another frame
+	(lldb) frame select -relative -1  // Select a new frame relative to the current frame
 
 **expr  =  expression
 Ejemplos:
