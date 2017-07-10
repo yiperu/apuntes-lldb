@@ -86,38 +86,50 @@ Comando  | Accion
 **Comprobar esto con: br list  // y ver en la descripcion en la consola los IDs de los breakpoint
 
 
+-
 
+##Using Expression and variables:
 
-
-Using Expression and variables:
 // ** If you use any of  the command option, then you must place  - -  at the end of option
 Example:  
-expr -L -- 5+5  // Esto genera una variable con el valor de 10
+
+	(lldb) expr -L -- 5+5  // Esto genera una variable con el valor de 10
 **Esto tambien: expr 5+6  = $0 = 11
 **Tambien podemos crear una variable cualquiera:
-expr int $monthToShow
+
+	(lldb) expr int $monthToShow
 // Can type “raw” Objetive-C code into LLDB parser which be evaluated in real time.
-expr self.view.hidden = YES
+
+	(lldb) expr self.view.hidden = YES
 // expr ((UILabel *)0x7ff171d05580).hidden = TRUE  // con la direccion
 // May change a running state of your program
-expr self.player.lives = 100
+
+	(lldb) expr self.player.lives = 100
 // Can be used to log messages to the console 
-expr (void) NSLog(@“hello word!”)  // Mensajes en consola
+
+	(lldb) expr (void) NSLog(@“hello word!”)  // Mensajes en consola
 // Can call methods on Objets
-expr (BOOL) [self.myArray containsObject:@“CarKeys”]
+
+	(lldb) expr (BOOL) [self.myArray containsObject:@“CarKeys”]
 // Print out structures in your code
-expr -- (CGRect) [self.view frame]
+
+	(lldb) expr -- (CGRect) [self.view frame]
 // Take “shortcuts” in your app
-expr [self prepareForSegue:@“mySegue” sender:nil]
+
+	(lldb) expr [self prepareForSegue:@“mySegue” sender:nil]
 // Para asignar cualquier variable interna puedo utilizar defrente expresion
-expr <variable> = <Any Value compatible> // Funciona en runtime
+
+	(lldb) expr <variable> = <Any Value compatible> // Funciona en runtime
 
 LLDB Variables: Variable names must have a type and begin with a $
-expr int $meaningOfLife = 42
+
+	(lldb) expr int $meaningOfLife = 42
 //Can be used with other expressions
-expr  100 + $meaningOfLife
+
+	(lldb) expr  100 + $meaningOfLife
 // Some expressions provide results in LLDB variables
-$0 = 142
+
+	(lldb) $0 = 142
 
 
 Create and run code on the fly
