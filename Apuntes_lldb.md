@@ -10,20 +10,18 @@ Impresion de Escalares
 	3
 
 Listar todos los Breakpoint
-a
-```python
-(lldb) br l
-(lldb) br delete 1	//  delete a breakpoint
-(lldb) br e 1		//  enable a breakpoint
-(lldb) br di 1		// disable a breakpoint
-(lldb) b MyViewController.m:30		// set a breakpoint (ojo solo b)
-```
+
+	(lldb) br l
+	(lldb) br delete 1	//  delete a breakpoint
+	(lldb) br e 1		//  enable a breakpoint
+	(lldb) br di 1		// disable a breakpoint
+	(lldb) b MyViewController.m:30		// set a breakpoint (ojo solo b)
+
 Add a symbolic breakpoint:
 
 Ejemplo a los metodos - (void)viewDidLoad
 
 ```(lldb) br set -n viewDidLoad```
-
 
 
 #####Tener en consideración que en los breakPoint existen 2 importantes características y estas a la vez tienen subcaracterísticas:
@@ -45,32 +43,38 @@ Ejemplo a los metodos - (void)viewDidLoad
 	
 	
 	
-	
-	Run a debugger command from a breakpoint 
-br com add 2   // Luego de esto aparecera un mensaje: Enter your debugger command(s). Type ‘DONE’ to end;
+**Run a debugger command from a breakpoint**
+
+	(lldb) br com add 2   // Luego de esto aparecera un mensaje: Enter your debugger command(s). Type ‘DONE’ to end;
+	Enter your debuger command(s). Type 'DONE' to end.
+	> bt
+	> continue
+	> DONE
+
+#####Comandos
+Accion  | Comando
+------------- | -------------
+Resume Execution (play)  | (lldb) continue
+Step Over  | (lldb) n
+Step In  | (lldb) s
+Step Out  | (lldb) finish
 
 
 
-Resume Execution (play)
-	continue
-Step Over
-	n
-Step In
-	s
-Step Out
-	finish
 
-**br  =  breakpoint
+*br  =  breakpoint
 
 
 
 
-*Symbolic BreakPoint: (simbolic): br set -n <method>
-br set -n viewDidLoad
-br set -n prepareForSegue:sender:
+###Symbolic BreakPoint: (simbolic): br set -n <method>
 
-*Ver lista de breakPoint
-br list
+	br set -n viewDidLoad
+	br set -n prepareForSegue:sender:
+
+####Ver lista de breakPoint
+
+	br list
 
 ** Ejemplo de como agregar como Action un Debugger command, en este caso un
 Run and debugger command from a breakpoint:
@@ -79,11 +83,21 @@ br com add 2     // Luego de esto aparecera un mensaje: Enter your debugger comm
 > bt   // back trace
 > continue
 > DONE
+
+
 // - - - -
-Set a conditional breakpoint:
-br mod -c “totalValue > 1000” 3    // Para modificar, en este caso comando
-br mod -c ‘self.monthToshow == 1 && !([(NSString *)self.images[1] isEquaToString:@”01.jpg”])’ 2    // Para modificar, en este caso comando
-**Comprobar esto con: br list  // y ver en la descripcion en la consola
+
+-
+###Set a Conditional Break Point
+	
+	1ro establecer el breakpoint:
+	(lldb) b BlablaViewController.m:32
+	Breakpoint 3: where = bla bla bla
+	(lldb) br mod -c “totalValue > 1000” 3. // Para modificar, en este caso comando *3=ID breakpoint
+	Otro Ejemplo para modificar el breakpoint de ID 2
+	(lldb) br mod -c ‘self.monthToshow == 1 && !([(NSString *)self.images[1] isEquaToString:@”01.jpg”])’ 2
+	
+**Comprobar esto con: br list  // y ver en la descripcion en la consola los IDs de los breakpoint
 
 
 
