@@ -28,7 +28,7 @@ Ejemplo a los metodos - (void)viewDidLoad
 ```(lldb) br set -n viewDidLoad```
 
 
-#####Tener en consideración que en los breakPoint existen 2 importantes características y estas a la vez tienen subcaracterísticas:
+##### Tener en consideración que en los breakPoint existen 2 importantes características y estas a la vez tienen subcaracterísticas:
 
 1. ***Condition***  `(BOOL)(launchOptions == NULL)`
 
@@ -55,7 +55,7 @@ Run and debugger command from a breakpoint: backTrace:
 	> continue
 	> DONE
 
-#####Comandos
+##### Comandos
 
 | Comando  | Accion |
 |------------- | -------------|
@@ -66,18 +66,18 @@ Run and debugger command from a breakpoint: backTrace:
 
 *br  =  breakpoint
 
-###Symbolic BreakPoint: (simbolic): br set -n <method>
+### Symbolic BreakPoint: (simbolic): br set -n <method>
 
 	br set -n viewDidLoad
 	br set -n prepareForSegue:sender:
 
-####Ver lista de breakPoint
+#### Ver lista de breakPoint
 
 	br list
 
 -
 
-###Set a Conditional Break Point
+### Set a Conditional Break Point
 	
 	1ro establecer el breakpoint:
 	(lldb) b BlablaViewController.m:32
@@ -91,7 +91,7 @@ Run and debugger command from a breakpoint: backTrace:
 
 -
 
-##Using Expression and variables:
+## Using Expression and variables:
 
 // ** If you use any of  the command option, then you must place  - -  at the end of option
 Example:  
@@ -159,7 +159,7 @@ c
 
 
 
-##Backtrace, Thread and Frame
+## Backtrace, Thread and Frame
 
 	(lldb) bt
 	(lldb) bt all
