@@ -2,9 +2,11 @@
 
 ### Impresiones
 
-Impresion de Objetos:
+Impresion de Objetos (print object):
 
 	po <Object>
+	po self.view
+	po [helloWordString lowercaseString]
 
 Impresion de Escalares
 
@@ -21,6 +23,7 @@ Comando  | Descripcion
 | (lldb) br di 1 | disable a breakpoint |
 | (lldb) b MyViewController.m:30 | set a breakpoint (ojo solo b) |
 
+### Symbolic Breakpoints
 Add a symbolic breakpoint:
 
 Ejemplo a los metodos - (void)viewDidLoad
@@ -35,6 +38,16 @@ Ejemplo a los metodos - (void)viewDidLoad
 	1.1. Esto se pone en el 1er combo box	
 	`br modify -c '(BOOL)(launchOptions == NULL)'`
 
+![condition-visual](./img/caracteristic.png)
+
+Example of Set a conditional breakpoint:
+
+```
+(lldb) b <NombreClase>.m:32
+Breakpoint 3: where = [<NombreClase> bla bla bla]
+(lldb) br mod -c "totalValue > 1000" 3
+```
+
 2. Action  :  `br command add <#> / br com add <#>`
 
 	1. AppleScript	
@@ -43,10 +56,13 @@ Ejemplo a los metodos - (void)viewDidLoad
 	4. Log Message	
 	5. Shell Command	
 	6. Sound
-		
-**Run a debugger command from a breakpoint**
+![condition-subcategory-visual](./img/action-subcaracteristic.png)		
 
-Ejemplo de como agregar como Action un Debugger command al un breakpoint de indice 2, en este caso un
+💡 Por quieres editar un breakpoint (Visualmente) sale por defecto `Debugger Command`
+
+**Run a `debugger command` from a breakpoint**
+
+Ejemplo de como agregar como Action un `Debugger Command` al un breakpoint de indice 2, en este caso un
 Run and debugger command from a breakpoint: backTrace:
 
 	(lldb) br com add 2   // Luego de esto aparecera un mensaje: Enter your debugger command(s). Type ‘DONE’ to end;
