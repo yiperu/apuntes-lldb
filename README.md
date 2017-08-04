@@ -18,10 +18,12 @@ Algunos Comandos
 Comando  | Descripcion
 |------------- | ------------- |
 | (lldb) br l  | Listar los breakpoint |
-| (lldb) br delete 1 | delete a breakpoint |
-| (lldb) br e 1 | enable a breakpoint |
-| (lldb) br di 1 | disable a breakpoint |
+| (lldb) br delete <indiceBreakPoint> | delete a breakpoint |
+| (lldb) br e <indiceBreakPoint> | enable a breakpoint |
+| (lldb) br di <indiceBreakPoint> | disable a breakpoint |
 | (lldb) b MyViewController.m:30 | set a breakpoint (ojo solo b) |
+
+💡 Los indices dependen de lo que se muestra en la lista de breakpoint `br list`
 
 ### Symbolic Breakpoints
 Add a symbolic breakpoint:
@@ -36,9 +38,10 @@ Ejemplo a los metodos - (void)viewDidLoad
 1. ***Condition***  `(BOOL)(launchOptions == NULL)`
 
 	1.1. Esto se pone en el 1er combo box	
-	```
-	br modify -c '(BOOL)(launchOptions == NULL)' <#IndiceBreakPoint>
-	```
+	
+		br modify -c '(BOOL)(launchOptions == NULL)' <#IndiceBreakPoin	
+		br mod -c 'self.monthToShow == 1 && !([self.images[1] isEqualToString:@"01.jpg"])' 2
+
 
 ![condition-visual](./img/caracteristic.png)
 
@@ -94,8 +97,11 @@ Run and debugger command from a breakpoint: backTrace:
 #### Ver lista de breakPoint
 
 	br list
+💡 For go to exactly place `Shift + Cmd + o` and write `<ClassName.m:<LineNumber>>`
 
--
+💡 For clear console `Cmd + K`
+
+
 
 ### Set a Conditional Break Point
 	
