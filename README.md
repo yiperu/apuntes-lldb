@@ -36,7 +36,9 @@ Ejemplo a los metodos - (void)viewDidLoad
 1. ***Condition***  `(BOOL)(launchOptions == NULL)`
 
 	1.1. Esto se pone en el 1er combo box	
-	`br modify -c '(BOOL)(launchOptions == NULL)'`
+	```
+	br modify -c '(BOOL)(launchOptions == NULL)' <#IndiceBreakPoint>
+	```
 
 ![condition-visual](./img/caracteristic.png)
 
@@ -50,12 +52,14 @@ Breakpoint 3: where = [<NombreClase> bla bla bla]
 
 2. Action  :  `br command add <#> / br com add <#>`
 
+	Subcaracteristicas de Action:
 	1. AppleScript	
 	2. Capture GPU Frame	
-	3. Debugger Command	
+	3. `Debugger Command` // for Default
 	4. Log Message	
 	5. Shell Command	
 	6. Sound
+	
 ![condition-subcategory-visual](./img/action-subcaracteristic.png)		
 
 💡 Por quieres editar un breakpoint (Visualmente) sale por defecto `Debugger Command`
