@@ -220,22 +220,38 @@ Otro Ejemplo:
 
 ## Backtrace, Thread and Frame
 
+### thread
+
 	(lldb) bt
 	(lldb) bt all
 
 	(lldb) thread backtrace
 	(lldb) thread backtrace all
 	(lldb) thread list
+	
 	(lldb) thread select 1
+	
+	⚒ Continue a certain line (much like a breakpoint)
 	(lldb) thread until 100
+
+	⚒ Return from function with custom value
 	(lldb) thread return @“Custom Return String”
 
-**Frame  // Inspect local variable in realtime
+### frame
 
+	⚒ Inspect local variable in realtime
 	(lldb) frame variable
 	(lldb) frame variable self
-	(lldb) frame select 2  // Select another frame
-	(lldb) frame select -relative -1  // Select a new frame relative to the current frame
+	💡 "frame variable" is not a full expression parser but does support operations like &, *, [], -> 
+	
+	⚒ Select another frame
+	(lldb) frame select 2
+	
+	⚒ Select a new frame relative to the curretn frame
+	(lldb) frame select -relative -1
+
+Demo
+
 
 **expr  =  expression
 Ejemplos:
