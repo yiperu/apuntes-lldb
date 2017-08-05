@@ -119,47 +119,74 @@ Run and debugger command from a breakpoint: backTrace:
 
 ## Using Expression and variables:
 
-// ** If you use any of  the command option, then you must place  - -  at the end of option
+💡 If you use any of  the command option, then you must place `--` at the end of option
+
+```
+(lldb) help po
+     Evaluate an expression (ObjC++ or Swift) in the current program context, using user defined variables and
+     variables currently in scope.
+...
+'po' is an abbreviation for 'expression -O  -- '
+Example: Muestra el mismo resultado
+💡 po self.monthToShow = expr -o -- self.monthToShow
+
+```
+
 Example:  
 
-	(lldb) expr -L -- 5+5  // Esto genera una variable con el valor de 10
-**Esto tambien: expr 5+6  = $0 = 11
-**Tambien podemos crear una variable cualquiera:
+	(lldb) expr -L -- 5+5  // Esto genera una variable ($0 o $1 o $<#>) con el valor de 10
+
+⚒ Tambien podemos crear una variable cualquiera:
 
 	(lldb) expr int $monthToShow
-// Can type “raw” Objetive-C code into LLDB parser which be evaluated in real time.
+	
+⚒ Can type “raw” Objetive-C code into LLDB parser which be evaluated in real time.
 
 	(lldb) expr self.view.hidden = YES
-// expr ((UILabel *)0x7ff171d05580).hidden = TRUE  // con la direccion
-// May change a running state of your program
+	
+⚒ Me ha pasado que cuando lo tengo en modo `Debug View Hierarchy` solo tengo la direccion de memoria:
+	
+	expr ((UILabel *)0x7ff171d05580).hidden = TRUE  // con la direccion
+	
+⚒ May change a running state of your program
 
 	(lldb) expr self.player.lives = 100
-// Can be used to log messages to the console 
+	
+⚒ Can be used to log messages to the console 
 
 	(lldb) expr (void) NSLog(@“hello word!”)  // Mensajes en consola
-// Can call methods on Objets
+	
+⚒ Can call methods on Objets
 
 	(lldb) expr (BOOL) [self.myArray containsObject:@“CarKeys”]
-// Print out structures in your code
+	
+⚒ Print out structures in your code
 
 	(lldb) expr -- (CGRect) [self.view frame]
-// Take “shortcuts” in your app
+	
+⚒ Take “shortcuts” in your app
 
 	(lldb) expr [self prepareForSegue:@“mySegue” sender:nil]
-// Para asignar cualquier variable interna puedo utilizar defrente expresion
+	
+⚒ Para asignar cualquier variable interna puedo utilizar de frente expresion
 
 	(lldb) expr <variable> = <Any Value compatible> // Funciona en runtime
 
-LLDB Variables: Variable names must have a type and begin with a $
+#### LLDB Variables: 
+
+💡 Variable names must have a `type` and begin with a `$`
 
 	(lldb) expr int $meaningOfLife = 42
-//Can be used with other expressions
+	
+⚒ Can be used with other expressions
 
 	(lldb) expr  100 + $meaningOfLife
-// Some expressions provide results in LLDB variables
+	
+⚒ Some expressions provide results in LLDB variables
 
 	(lldb) $0 = 142
-
+	(lldb) p $0 + 200
+	(lldb) $1 = 242
 
 Create and run code on the fly
 
@@ -175,15 +202,11 @@ Otro Ejemplo:
 
 	po [[NSString alloc] initWithData:response.responseData encoding:4]
 
-// Hubo un ejemplo muy interesante donde en tiempo de debug se pudo asignar un valor a una variable del sistema, lo que llaman run code on the fly
+✅ Hubo un ejemplo muy interesante donde en tiempo de debug se pudo asignar un valor a una variable del sistema, lo que llaman run code on the fly
 
-**Despues de llamar a un metodo, puedes continuar con continue:
-expr [self performSegueWithIdentifier:@”GoToPaper” sender:nil]
-c
-**Para terminanar: DONE
-
-
-
+💡 Despues de llamar a un metodo, puedes continuar con `continue o c`:
+`expr [self performSegueWithIdentifier:@”GoToPaper” sender:nil]`
+`c` Para terminanar: `DONE`
 
 ## Backtrace, Thread and Frame
 
@@ -292,4 +315,7 @@ https://github.com/ryanolsonk/LLDB-QuickLook
 
 Ima25
 RJu17
+
+[Pagina Oficial: The LLDB Debugger](https://lldb.llvm.org/)
+
 
