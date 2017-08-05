@@ -202,11 +202,21 @@ Otro Ejemplo:
 
 	po [[NSString alloc] initWithData:response.responseData encoding:4]
 
-✅ Hubo un ejemplo muy interesante donde en tiempo de debug se pudo asignar un valor a una variable del sistema, lo que llaman run code on the fly
+💡 Un ejemplo de como aplicar esto:
 
-💡 Despues de llamar a un metodo, puedes continuar con `continue o c`:
-`expr [self performSegueWithIdentifier:@”GoToPaper” sender:nil]`
-`c` Para terminanar: `DONE`
+```
+1.- Se creo 1ro un br
+2.- se le modifico su action
+	br com add 1
+	> expression [self performSegueWithIdentifier:@"GoToPaper"] sender:nil]
+	> continue
+	> DONE
+3.- Se puso c de continuar
+4.- Se simuló la accion para ver los resultados
+```
+
+✅ Hubo un ejemplo muy interesante donde en runtime se hizo debug, y se pudo asignar un valor a una variable del sistema, y luego continuar el proceso, lo que llaman `run code on the fly`.
+
 
 ## Backtrace, Thread and Frame
 
