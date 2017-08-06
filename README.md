@@ -221,7 +221,7 @@ Otro Ejemplo:
 ## Backtrace, Thread and Frame
 
 ### backtrace
-	(lldb) bt      // Muestra thread actual con sus frames
+	(lldb) bt      // Muestra la pila de frames del thread actual
 	(lldb) bt all  // Muestra todos los threads con sus frames
 
 ### thread
@@ -231,6 +231,7 @@ Otro Ejemplo:
 	
 	(lldb) thread list				// Muestra la lista de threads
 	
+	(lldb) thread select <#>	// Depende a que thread quiere seleccionar
 	(lldb) thread select 1
 	
 	⚒ Continue a certain line (much like a breakpoint)
@@ -251,7 +252,7 @@ Otro Ejemplo:
 	⚒ Select another frame
 	(lldb) frame select 2
 	
-	⚒ Select a new frame relative to the curretn frame
+	⚒ Select a new frame relative to the curretn frame, es genial esto 😜
 	(lldb) frame select -relative -1
 
 Demo 5'
