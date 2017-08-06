@@ -128,13 +128,15 @@ Run and debugger command from a breakpoint: backTrace:
 ...
 'po' is an abbreviation for 'expression -O  -- '
 Example: Muestra el mismo resultado
-💡 po self.monthToShow = expr -o -- self.monthToShow
+💡 po self.monthToShow	= expr -o -- self.monthToShow
+💡 po self.view			= expr -o -- self.view
 
 ```
 
 Example:  
 
 	(lldb) expr -L -- 5+5  // Esto genera una variable ($0 o $1 o $<#>) con el valor de 10
+	(lldb) expression -- (CGRect)[self.view frame] // expr = expression
 
 ⚒ Tambien podemos crear una variable cualquiera:
 
@@ -239,6 +241,10 @@ Otro Ejemplo:
 
 	⚒ Return from function with custom value
 	(lldb) thread return @“Custom Return String”
+	
+	⚒ Analizar este ejemplo, donde podemos cambiar el retorno de un metodo (En este caso a YES)
+	(lldb) thread until <linea de Codigo>
+	(lldb) thread return YES	
 
 ### frame
 
@@ -253,49 +259,32 @@ Otro Ejemplo:
 	(lldb) frame select 2
 	
 	⚒ Select a new frame relative to the curretn frame, es genial esto 😜
-	(lldb) frame select -relative -1
+	(lldb) frame select -relative -1		// Se va al frame anterior del actual
+	(lldb) frame select -relative 1		// Se va al frame siguiente del actual	
+Remember this example
 
-Demo 5'
+```
+thread until 63
+frame variable
+thread return YES
+n
+frame variables
+```
+
+Demo 5' 
 
 💡 Para ver visualmente en Xcode los thread con sus frames `Cmd + 6` = `Show the debug navigator`
 
 ![Show-the-debug Navigator](./img/show-debug-navigator.png)
 
-
-**expr  =  expression
-Ejemplos:
-	expression -- (CGRect)[self.view frame]
-	expr -o -- self.view  =  po self.view	
-**frame
-	frame variable
-	frame variable self
-	frame select -relative 1	
-**thread
-	thread list
-	thread select 1
-	thread select -1
 	
-	
-**Hay una demostracion donde sigue estos comandos:
-bt
-thread list
-thread select 1
-bt
-frame select 7
-frame variable
-frame variable sender
-po sender
-frame select -relative 1
-frame select -relative -1
-.
-.
-.
-thread until 63
-frame variable
-thread return YES
-n
-frame variablea
 
+## Watchpoint, Script, Command
+
+### Watchpoint
+	(lldb) watchpoint list			// List a watchpoint
+	(lldb) watchpoint delete 1		// Delete a watchpoint	
+	
 
 
 
