@@ -220,14 +220,16 @@ Otro Ejemplo:
 
 ## Backtrace, Thread and Frame
 
+### backtrace
+	(lldb) bt      // Muestra thread actual con sus frames
+	(lldb) bt all  // Muestra todos los threads con sus frames
+
 ### thread
 
-	(lldb) bt
-	(lldb) bt all
-
-	(lldb) thread backtrace
-	(lldb) thread backtrace all
-	(lldb) thread list
+	(lldb) thread backtrace			// veo que muestra lo mismo que: bt
+	(lldb) thread backtrace all	// veo que muestra lo mismo que: bt all
+	
+	(lldb) thread list				// Muestra la lista de threads
 	
 	(lldb) thread select 1
 	
@@ -241,6 +243,8 @@ Otro Ejemplo:
 
 	⚒ Inspect local variable in realtime
 	(lldb) frame variable
+	
+	⚒ Para ver una variable particular : frame variable <variable> // Example:
 	(lldb) frame variable self
 	💡 "frame variable" is not a full expression parser but does support operations like &, *, [], -> 
 	
@@ -250,7 +254,11 @@ Otro Ejemplo:
 	⚒ Select a new frame relative to the curretn frame
 	(lldb) frame select -relative -1
 
-Demo
+Demo 5'
+
+💡 Para ver visualmente en Xcode los thread con sus frames `Cmd + 6` = `Show the debug navigator`
+
+![Show-the-debug Navigator](./img/show-debug-navigator.png)
 
 
 **expr  =  expression
