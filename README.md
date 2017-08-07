@@ -488,7 +488,139 @@ Alias
 
 	(lldb) po myString		
 
+### Asking for Help
 
+	(lldb) help watchpoint
+	(lldb) help watchpoint set
+	(lldb) help <byte-size>
+	(lldb) help po
+	(lldb) help -a
+
+```	
+(lldb) aproppos break
+
+The following commands may relate to 'break':
+  _regexp-break                         -- Set a breakpoint using one of
+                                           several shorthand formats.
+  _regexp-tbreak                        -- Set a one-shot breakpoint using one
+                                           of several shorthand formats.
+  breakpoint                            -- Commands for operating on
+                                           breakpoints (see 'help b' for
+                                           shorthand.)
+  breakpoint clear                      -- Delete or disable breakpoints
+                                           matching the specified source file
+                                           and line.
+  breakpoint command                    -- Commands for adding, removing and
+                                           listing LLDB commands executed when
+                                           a breakpoint is hit.
+  breakpoint command add                -- Add LLDB commands to a breakpoint,
+                                           to be executed whenever the
+                                           breakpoint is hit.  If no breakpoint
+                                           is specified, adds the commands to
+                                           the last created breakpoint.
+  breakpoint command delete             -- Delete the set of commands from a
+                                           breakpoint.
+  breakpoint command list               -- List the script or set of commands
+                                           to be executed when the breakpoint
+                                           is hit.
+  breakpoint delete                     -- Delete the specified breakpoint(s). 
+                                           If no breakpoints are specified,
+                                           delete them all.
+  breakpoint disable                    -- Disable the specified breakpoint(s)
+                                           without deleting them.  If none are
+                                           specified, disable all breakpoints.
+  breakpoint enable                     -- Enable the specified disabled
+                                           breakpoint(s). If no breakpoints are
+                                           specified, enable all of them.
+  breakpoint list                       -- List some or all breakpoints at
+                                           configurable levels of detail.
+  breakpoint modify                     -- Modify the options on a breakpoint
+                                           or set of breakpoints in the
+                                           executable.  If no breakpoint is
+                                           specified, acts on the last created
+                                           breakpoint.  With the exception of
+                                           -e, -d and -i, passing an empty
+                                           argument clears the modification.
+  breakpoint name                       -- Commands to manage name tags for
+                                           breakpoints
+  add                                   -- Add a name to the breakpoints
+                                           provided.
+  delete                                -- Delete a name from the breakpoints
+                                           provided.
+  list                                  -- List either the names for a
+                                           breakpoint or the breakpoints for a
+                                           given name.
+  breakpoint read                       -- Read and set the breakpoints
+                                           previously saved to a file with
+                                           "breakpoint write".  
+  breakpoint set                        -- Sets a breakpoint or set of
+                                           breakpoints in the executable.
+  breakpoint write                      -- Write the breakpoints listed to a
+                                           file that can be read in with
+                                           "breakpoint read".  If given no
+                                           arguments, writes all breakpoints.
+  renderscript kernel                   -- Commands that generate breakpoints
+                                           on renderscript kernels.
+  renderscript kernel breakpoint all    -- Automatically sets a breakpoint on
+                                           all renderscript kernels that are or
+                                           will be loaded.
+                                           Disabling option means breakpoints
+                                           will no longer be set on any kernels
+                                           loaded in the future, but does not
+                                           remove currently set breakpoints.
+  renderscript kernel breakpoint set    -- Sets a breakpoint on a renderscript
+                                           kernel.
+  renderscript reduction breakpoint     -- Commands that manipulate breakpoints
+                                           on renderscript general reductions.
+  renderscript reduction breakpoint set -- Set a breakpoint on named
+                                           RenderScript general reductions
+  b                                     -- Set a breakpoint using one of
+                                           several shorthand formats.
+  rbreak                                -- Sets a breakpoint or set of
+                                           breakpoints in the executable.
+  tbreak                                -- Set a one-shot breakpoint using one
+                                           of several shorthand formats.
+
+The following settings variables may relate to 'break': 
+
+  target.move-to-nearest-code -- Move breakpoints to nearest code.
+  target.skip-prologue -- Skip function prologues when setting breakpoints by
+                          name.
+  target.breakpoints-use-platform-avoid-list -- Consult the platform module
+                                                avoid list when setting
+                                                non-module specific
+                                                breakpoints.
+  target.inline-breakpoint-strategy -- The strategy to use when settings
+                                       breakpoints by file and line. Breakpoint
+                                       locations can end up being inlined by
+                                       the compiler, so that a compile unit
+                                       'a.c' might contain an inlined function
+                                       from another source file. Usually this
+                                       is limited to breakpoint locations from
+                                       inlined functions from header or other
+                                       include files, or more accurately
+                                       non-implementation source files.
+                                       Sometimes code might #include
+                                       implementation files and cause inlined
+                                       breakpoint locations in inlined
+                                       implementation files. Always checking
+                                       for inlined breakpoint locations can be
+                                       expensive (memory and time), so if you
+                                       have a project with many headers and
+                                       find that setting breakpoints is slow,
+                                       then you can change this setting to
+                                       headers. This setting allows you to
+                                       control exactly which strategy is used
+                                       when setting file and line breakpoints.
+  target.process.ignore-breakpoints-in-expressions -- If true, breakpoints will
+                                                      be ignored during
+                                                      expression evaluation.
+  plugin.jit-loader.gdb.enable-jit-breakpoint -- Enable breakpoint on
+                                                 __jit_debug_register_code.
+```
+
+                                                 
+	
 
 
 type summary add -P CGRect
