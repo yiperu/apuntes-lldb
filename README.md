@@ -451,6 +451,31 @@ def print_locals(frame, bp_loc, internal_dict):
 
 💡 `def <name method>`   // definir metodo en python
 
+### Finding Help and Creating Aliases
+
+#### LLDB Commands Syntax
+
+`<command>` `<action>` `[options]` `[arguments]`
+
+⚒ -
+
+	(lldb) breakpoint set --selector speakAgain
+	
+	(lldb) process launch --stop-at-entry -- -prorgam_arg1 value
+	
+⚒ Options can be placed anywhere
+
+⚒ For arguments that are preceded with a "-", separate the options from the arguments with --
+
+⚒ Quotes can protect spaces
+
+⚒ Quotes can be escaped: "\"
+
+⚒ Some commands are unparsed after options.
+	(script and expression)
+	
+	
+
 
 
 type summary add -P CGRect
