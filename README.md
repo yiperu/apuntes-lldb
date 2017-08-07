@@ -474,7 +474,20 @@ def print_locals(frame, bp_loc, internal_dict):
 ⚒ Some commands are unparsed after options.
 	(script and expression)
 	
+#### Three Syntax Forms
+
+Discoverable form
+
+	(lldb) expression --objective-description -- myString
 	
+Abbreviated form
+
+	(lldb) e -0 -- myString
+	
+Alias
+
+	(lldb) po myString		
+
 
 
 
