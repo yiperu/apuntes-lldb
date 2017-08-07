@@ -283,9 +283,85 @@ Demo 5'
 
 ### Watchpoint
 	(lldb) watchpoint list			// List a watchpoint
+	(lldb) watchpoint delete <Id Number Watchpount>
 	(lldb) watchpoint delete 1		// Delete a watchpoint	
-	
+⚒ Set a watchpoint
 
+	(lldb) watchpoint set variable _x
+	
+⚒ Add a condition on an address
+
+	(lldb) watchpoint set expression -- my_pointer
+	
+⚒ Add a condition on a watchpoint
+
+	(lldb) watchpoint modify -c "_x < 0" 1
+	
+⚒ Remove a condition from a watchpoint
+
+	(lldb) watchpoint modify -c "" 1		
+
+### Script
+
+💡 LLDB contains an embeddeb Python interpreter
+
+💡 The entery API es exposed through Python scripting bindings
+
+💡 The script commands parses raw Python commands
+
+```
+(lldb) script print(sys.version)
+2.7.10 (default, Jun 26 2016, 00:32:49) 
+[GCC 4.2.1 Compatible Apple LLVM 8.0.0 (clang-800.0.31)]
+```
+
+💡 Run phyton scripts from breakpoint
+
+- LLDB creates a Phyton function to encapsulate the scripts
+- If you want to access the script variables outside the breakpoint, you must declare them as global variables.
+
+```
+	(lldb) breakpoint command add -s python 1  |  br command add <#>
+```	
+	
+### Breakpoint Functions
+
+	def breakpoint_func(frame, bp_loc, session_dictionary):
+
+- frame: 	The current stack frame of the breakpoint
+- bp_loc: The current breakpoint location
+- dict: 	The python session dictionary
+
+```
+(lldb) breakpoint command add -F my.breakpoint_func
+```
+
+### Command
+
+⚒ Import existing scripts to be used during your debbuging session
+
+	(lldb) command script import ~/my_script.py
+
+⚒ Create a new LLDB command bt calling a Phyton function
+
+	(lldb) command script add -f my_script.python_function cmd_name
+	
+⚒ Import existing LLDB debugger script
+
+	(lldb) command import ~/my_lldb_commands.txt
+	
+⚒ Delete uset create alias
+
+	(lldb) command unalias pf
+	
+⚒ Print out command history
+
+	(lldb) command history
+
+
+
+
+	
 
 
 def function   // definir función en python
