@@ -300,6 +300,8 @@ Demo 5'
 ⚒ Remove a condition from a watchpoint
 
 	(lldb) watchpoint modify -c "" 1		
+	
+💡 Si modificas la condicion de algun `watchpoint`, esto lo puedes ver con el `watchpoint list`.
 
 ### Script
 
@@ -322,6 +324,15 @@ Demo 5'
 
 ```
 	(lldb) breakpoint command add -s python 1  |  br command add <#>
+```	
+Example:
+
+```
+(lldb) script
+Python Interactive Interpreter. To exit, type 'quit()', 'exit()'.
+>>> print "Hello Word"
+Hello Word
+>>> exit()
 ```	
 	
 ### Breakpoint Functions
