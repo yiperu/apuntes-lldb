@@ -343,6 +343,31 @@ Hello Word
 - bp_loc: The current breakpoint location
 - dict: 	The python session dictionary
 
+
+Example:
+
+```
+(lldb) breakpoint command add -s python 1
+Enter your Python command(s). Type 'DONE' to end.
+def function (frame, bp_loc, internal_dict):
+    """frame: the lldb.SBFrame for the location at which you stopped
+       bp_loc: an lldb.SBBreakpointLocation for the breakpoint location information
+       internal_dict: an LLDB support object not to be used"""
+    variables = frame.GetVariables(False,True,False,True)
+    for i in range(0, variables.GetSize()):
+     variable = variables.GetValueAtIndex(i)
+     print variable
+    DONE
+```	
+
+En la siguiente interacion, sale algo asi:
+
+```
+(double) i = 0.005833333358168602
+(double) m = 72
+(double) r = 58.654444222584175
+```
+
 ```
 (lldb) breakpoint command add -F my.breakpoint_func
 ```
@@ -363,19 +388,61 @@ Hello Word
 	
 ⚒ Delete uset create alias
 
-	(lldb) command unalias pf
+	(lldb) command unalias <pf>
 	
 ⚒ Print out command history
 
 	(lldb) command history
 
 
+#### Example from another file
 
+Se peude crear el archivo python individualmente y luego importarlo:
 
+1.- Crear un empty file
+
+2.- Nombrarlo con un <NameFile>.py
+
+![Select empty file](./img/empty-file.png)
+
+3.- Definimos el contenido del archivo
+
+```
+def print_locals(frame, bp_loc, internal_dict):
+  varables = frame.GetVariables(False, True, False, True)
+  for i in range(0, variables.GetSize()):
+    variable = variables.GetValueAtIndex(i)
+    print variable
+```    
 	
+4.- Poner un Breakpoint donde sea conveniente
+
+5.- tener en memoria la ruta del archivo python, esto lo encontramos en `shwo thw file inspector`
+
+6.- Ejecutar la App y cuando se detenga en el breakpoint, ejecutar el siguien comando;
+
+```
+(lldb) command script import "La/Ruta/del/File/De/Phyton.py"
+```
+
+7.- En este punto el archivo esta importado en my script
+
+8.- Mediate el comando `breakpoint list` podemos ver en que `breakpoint` atacharlo
+
+9.- Tener en cuenta que la funcion se llama con el `breakpoint.<Nombre Del Metodo> <Id breakpoint>`
+
+```
+(lldb) breakpoint command add -F breakpoint.print_locals 4
+```
+
+10.- Esto lo podemos ver reflejado con el comando `breakpoint list`, cuando ejecutemos y llegue a este breakpoint, deberia verse ejecutado este script
+
+-
 
 
-def function   // definir función en python
+💡 `def <name method>`   // definir metodo en python
+
+
 
 type summary add -P CGRect
 type format add
