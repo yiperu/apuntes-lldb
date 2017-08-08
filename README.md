@@ -667,6 +667,14 @@ The following settings variables may relate to 'break':
 
 TODO: Falta poner imagen aqui ;-)
 
+#### Demo: Revealing the Data
+
+💡 Demostrate positional alias
+
+💡 Demostrate regex alias
+
+💡 Show how to persist aliases between debugging sessions
+
 
 type summary add -P CGRect
 type format add
