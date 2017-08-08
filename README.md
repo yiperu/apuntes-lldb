@@ -657,13 +657,16 @@ The following settings variables may relate to 'break':
 
 #### Creating global aliases
 
-💡 Save LLDB commands in file: ~/.lldbinit
+💡 Save LLDB commands in file: `~/.lldbinit`
 
 #### Creating project aliases
 
-💡 Save LLDB commands in file: ~/.lldbinit_my_project
+💡 Save LLDB commands in file: `~/.lldbinit_my_project`
 
 💡 Create new breakpoint with the following LLDB command:
+
+TODO: Falta poner imagen aqui ;-)
+
 
 type summary add -P CGRect
 type format add
