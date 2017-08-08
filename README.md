@@ -619,9 +619,51 @@ The following settings variables may relate to 'break':
                                                  __jit_debug_register_code.
 ```
 
-                                                 
-	
+-
 
+### Creating an Alias
+
+-
+
+#### Positional Aliases:
+
+💡 Provides simple substitutions
+
+💡 Additional arguments are appended to the end
+
+```
+(lldb) command alias <alias-name> <substitute>
+```
+
+💡 Ability to position arguments in the command line
+
+💡 % in the command line will match the argument
+    
+```
+(lldb) command alias sbr breakpoint set -l %1
+```
+	
+#### Regular Expression Aliases:
+
+💡 Alias arguments are matched against a regular expression
+
+💡 Multiple regular expression may be included
+
+💡 First regular expression match wins
+
+```
+(lldb) command regex sbr 's/([0-9]+)/breakpoint set -l %1/'
+```
+
+#### Creating global aliases
+
+💡 Save LLDB commands in file: ~/.lldbinit
+
+#### Creating project aliases
+
+💡 Save LLDB commands in file: ~/.lldbinit_my_project
+
+💡 Create new breakpoint with the following LLDB command:
 
 type summary add -P CGRect
 type format add
