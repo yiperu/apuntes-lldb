@@ -155,9 +155,10 @@ Example:
 
 	(lldb) expr self.view.hidden = YES
 	
-⚒ Me ha pasado que cuando lo tengo en modo `Debug View Hierarchy` solo tengo la direccion de memoria:
+⚒ Me ha pasado que cuando lo tengo en modo `Debug View Hierarchy` solo tengo la direccion de memoria, puedo acceder a traves de este:
 	
 	expr ((UILabel *)0x7ff171d05580).hidden = TRUE  // con la direccion
+	po ((UILabel *)0x7ff171d05580).text
 	
 ⚒ May change a running state of your program
 
@@ -771,19 +772,11 @@ help -a
 
 help <Any>
 
+[Check this](https://github.com/DerekSelander/LLDB)
 
+[llvm project blog](http://blog.llvm.org/2011/04/regular-expression-commands.html)
 
-**Cuando tengo en modo debug view Hierarchy: puedo acceder a travez de su dirección
-po ((UILabel *)0x7ff171d05580).text
-
-
-
-
-QuickLook
-https://github.com/ryanolsonk/LLDB-QuickLook
-
-Ima25
-RJu17
+[QuickLook](https://github.com/ryanolsonk/LLDB-QuickLook)
 
 [Pagina Oficial: The LLDB Debugger](https://lldb.llvm.org/)
 
