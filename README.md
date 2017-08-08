@@ -465,7 +465,7 @@ def print_locals(frame, bp_loc, internal_dict):
 	
 ⚒ Options can be placed anywhere
 
-⚒ For arguments that are preceded with a "-", separate the options from the arguments with --
+⚒ For arguments that are preceded with a " - ", separate the options from the arguments with " -- "
 
 ⚒ Quotes can protect spaces
 
@@ -482,7 +482,7 @@ Discoverable form
 	
 Abbreviated form
 
-	(lldb) e -0 -- myString
+	(lldb) e -O -- myString
 	
 Alias
 
@@ -665,7 +665,7 @@ The following settings variables may relate to 'break':
 
 💡 Create new breakpoint with the following LLDB command:
 
-TODO: Falta poner imagen aqui ;-)
+![Creating project aliases](./img/project-alias.png)
 
 #### Demo: Revealing the Data
 
@@ -674,6 +674,65 @@ TODO: Falta poner imagen aqui ;-)
 💡 Demostrate regex alias
 
 💡 Show how to persist aliases between debugging sessions
+
+#### Demo: 
+
+```
+(lldb) help
+(lldb) help breakpoint
+(lldb) help breakpoint set
+(lldb) help <address-expression>
+(lldb) apropos breakpoint
+```
+
+💡 Crearemos un alias para
+
+```
+expression (CGRect)[self.view frame]
+```
+
+este sería:
+
+```
+(lldb) command alias pf expr (CGRect) [self.view frame]
+```
+
+Y ahora lo podemos utilizar como:
+
+```
+(lldb) pf
+(CGRect) $1 = (origin = (x = 0, y = 0), size = (width = 320, height = 480))
+```
+
+🚦 Esto funciona solo en el debugging session.
+
+💡 Crearemos un alias utilizando regular expresion (regex)
+
+```
+(lldb) command regex pf
+Enter one of more sed substitution commands in the form: 's/<regex>/<subst>/'.
+Terminate the substitution list with an empty line.
+> s/(.+)/expr (CGRect)[%1 frame]/
+> s/^$/expr (CGRect)[self.view frame]/
+> 
+(lldb) pf
+(CGRect) $2 = (origin = (x = 0, y = 0), size = (width = 320, height = 480))
+(lldb) pf self.button
+(CGRect) $3 = (origin = (x = 137, y = 269), size = (width = 46, height = 30))
+```
+
+#### Demo de hacer persistente los alias: 
+
+💡 Crearemos un archivo con el nombre de `.lldbinit` en  `/Users/<tuUser>/.lldbinit`
+
+con este contenido, luego salir y volver ingresar al Xcode.
+
+```
+command script import /usr/local/opt/chisel/libexec/fblldb.py
+command regex pf 's/(.+)/expr (CGRect)[%1 frame]/' 's/^$/expr (CGRect) [self.view frame]/'
+command alias pjson expression -O -- [NSString alloc] initWithData:responseData encoding:4]
+```
+
 
 
 type summary add -P CGRect
